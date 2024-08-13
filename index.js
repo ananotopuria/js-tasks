@@ -1,281 +1,146 @@
-///////////////////////////////////////////////////////////////
+// სტრინგიდან ამოვიღოთ გამოყენებული ასოები
 
-// 1. Write a JavaScript program that displays the largest integer among two integers.
+// const str1 = "h3olke";
+// const str2 = "hello";
 
-function largestInteger(a, b) {
-  return a > b ? a : b;
-}
-
-console.log(largestInteger(5, 8));
-console.log(largestInteger(10, 4));
-
-// 2. Write a JavaScript conditional statement to find the sign of the product of three numbers. Display an alert box with the specified sign.
-// Sample numbers : 3, -7, 2
-// Output : The sign is -
-
-function sign(a, b, c) {
-  const multiply = a * b * c;
-  if (multiply > 0) {
-    console.log("The sign is +");
-  } else if (multiply === 0) {
-    console.log("The sign is 0");
-  } else {
-    console.log("The sign is -");
-  }
-}
-
-// 3. Write a JavaScript conditional statement to sort three numbers. Display an alert box to show the results.
-// Sample numbers : 0, -1, 4
-// Output : 4, 0, -1
-
-// function sort(a, b, c) {
-//   const lowerNumber = a < b ? a : b;
-//   const lowest = lowerNumber < c ? lowerNumber : c;
-
-//   const higherNumber = a < b ? b : a;
-//   const highest = higherNumber > c ? higherNumber : c;
-
-//   let middleNumber;
-
-//   if (lowest < a && a < highest) {
-//     middleNumber = a;
-//   } else if (lowest < b && b < highest) {
-//     middleNumber = b;
-//   } else if (lowest < c && c < highest) {
-//     middleNumber = c;
-//   }
-
-//   console.log(middleNumber);
-//   console.log(highest, middleNumber, lowest);
+// function sortStrLetters(str) {
+//   return str.split("").sort().join("");
 // }
 
-// sort(0, -1, 4);
-// sort(6, 4, -3);
+// function isContainLetter(str1, str2) {
+//     let result = false;
+//     // debugger
+//   for(let i = 0; i < str2.length; i++) {
+//     if(!str1.includes(str2[i])){
+//         return result;
+//     }
+//   }
+//   return true;
+// }
 
-function sortNumbers(num1, num2, num3) {
-  let numbers = [num1, num2, num3];
-  numbers.sort((a, b) => b - a);
-  // numbers.sort((a, b) => a - b);
-  console.log(...numbers);
-}
+// console.log(isContainLetter(str1, str2)); // True False
 
-sortNumbers(0, -1, 4);
+const str1 = "h3olke";
+const str2 = "hello";
 
-// 4. Write a JavaScript conditional statement to find the largest of five numbers. Display an alert box to show the results.
-// Sample numbers : -5, -2, -6, 0, -1
-// Output : 0
-
-function largestNumber(...numbers) {
-  const highest = Math.max(...numbers);
-  const lowest = Math.min(...numbers);
-  const middleNumbers = numbers.filter(
-    (num) => num !== highest && num !== lowest
-  );
-  middleNumbers.sort((a, b) => b - a);
-  console.log(`Highest: ${highest}`);
-  console.log(`Middle numbers: ${middleNumbers.join(", ")}`);
-  console.log(`Lowest: ${lowest}`);
-}
-
-largestNumber(-5, -2, -6, 0, -1);
-
-// 5. Write a JavaScript for loop that iterates from 0 to 15. For each iteration, it checks if the current number is odd or even, and displays a message on the screen.
-// Sample Output :
-// "0 is even"
-// "1 is odd"
-// "2 is even"
-
-for (let i = 0; i <= 15; i++) {
-  console.log(`${i} is ${i % 2 === 0 ? "Even" : "Odd"}`);
-}
-
-// 6. 6. Write a JavaScript program that computes the average marks of the following students. Then, this average is used to determine the corresponding grade.
-
-// Student Name	Marks
-// David	80
-// Vinoth	77
-// Divya	88
-// Ishitha	95
-// Thomas	68
-// The grades are computed as follows :
-
-// Range	Grade
-// <60	F
-// <70	D
-// <80	C
-// <90	B
-// <100	A
-
-const students = {
-  David: 80,
-  Vinoth: 77,
-  Divya: 88,
-  Ishitha: 95,
-  Thomas: 68,
-};
-
-let totalMarks = 0;
-let studentCount = 0;
-
-for (const student in students) {
-  totalMarks += students[student];
-  studentCount++;
-}
-
-const averageMarks = totalMarks / studentCount;
-
-const grade =
-  averageMarks < 60
-    ? "F"
-    : averageMarks < 70
-    ? "D"
-    : averageMarks < 80
-    ? "C"
-    : averageMarks < 90
-    ? "B"
-    : "A";
-
-console.log(`Average Marks: ${averageMarks.toFixed(2)}`);
-console.log(`Grade: ${grade}`);
-
-// 7. Write a JavaScript program that iterates integers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for multiples of five print "Buzz". For numbers multiples of both three and five print "FizzBuzz".
-
-function fizzBuzz(number) {
-  let result = "";
-  if (number % 3 === 0) {
-    result += "Fizz";
-  }
-  if (number % 5 === 0) {
-    result += "Buzz";
-  }
-  return result === "" ? number : result;
-}
-
-for (let i = 1; i <= 100; i++) {
-  console.log(fizzBuzz(i));
-}
-
-// Function to calculate the sum of squares of digits of a number
-function sumOfSquares(num) {
-  let sum = 0;
-  while (num > 0) {
-    let digit = num % 10;
-    sum += digit * digit;
-    num = Math.floor(num / 10);
-  }
-  return sum;
-}
-
-// 8. According to Wikipedia a happy number is defined by the following process :
-// "Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1
-// (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers,
-// while those that do not end in 1 are unhappy numbers (or sad numbers)".
-// Write a JavaScript program to find and print the first 5 happy numbers.
-
-function sumOfSquares(num) {
-  let sum = 0;
-  while (num > 0) {
-    let digit = num % 10;
-    sum += digit * digit;
-    num = Math.floor(num / 10);
-  }
-  return sum;
-}
-
-function isHappy(num) {
-  let seen = new Set();
-  while (num !== 1 && !seen.has(num)) {
-    seen.add(num);
-    num = sumOfSquares(num);
-  }
-  return num === 1;
-}
-
-function findHappyNumbers(count) {
-  let happyNumbers = [];
-  let number = 1;
-
-  while (happyNumbers.length < count) {
-    if (isHappy(number)) {
-      happyNumbers.push(number);
+function isContainLetter(str1, str2) {
+  let result = false;
+  let usedLetters = [...str1];
+  for (let i = 0; i < str2.length; i++) {
+    const letterIndex = usedLetters.indexOf(str2[i]);
+    console.log(letterIndex);
+    if (letterIndex === -1) {
+      return result;
+    } else {
+      usedLetters.splice(letterIndex, 1);
     }
-    number++;
   }
-
-  console.log(`First ${count} happy numbers:`, happyNumbers);
+  return true;
 }
 
-findHappyNumbers(5);
+console.log(isContainLetter(str1, str2)); // false
+console.log(`////////////////////////////////////////////////////////////////`);
 
-// 9. Write a JavaScript program to find the Armstrong numbers of 3 digits.
-// Note : An Armstrong number of three digits is an integer such that the sum of the cubes of its digits is equal to the number itself. For example, 371 is an Armstrong number since 3**3 + 7**3 + 1**3 = 371.
+// https://www.w3resource.com/csharp-exercises/for-loop/index.php
 
-function amstrongNumber(number) {
-  let originalNumber = number;
+//  15. calculate the factorial of a given number.
+// Input the number : 5
+// The Factorial of 5 is: 120
+//  ვიპოვოთ რიცხვის ფაქტორიალი 5! = 1 * 2 * 3 * 4 * 5
+
+function factorial(num) {
+  let multiply = 1;
+  for (i = 1; i <= num; i++) {
+    multiply *= i;
+    // console.log(multiply);
+  }
+  return multiply;
+}
+
+console.log(factorial(5));
+console.log(factorial(3));
+
+console.log(`////////////////////////////////////////////////////////////////`);
+
+//  16. display the n terms of even natural number and their sum.
+// Test Data :
+// Input number of terms : 5
+// Expected Output :
+// The even numbers are :2 4 6 8 10
+// The Sum of even Natural Number upto 5 terms : 30
+
+function evenNumbersAndSum(n) {
   let sum = 0;
-  while (number > 0) {
-    let remainder = number % 10;
-    sum += Math.pow(remainder, 3);
-    number = Math.floor(number / 10);
+  let evenNumbers = [];
+
+  for (let i = 1; i <= n; i++) {
+    let evenNum = 2 * i;
+    evenNumbers.push(evenNum);
+    sum += evenNum;
   }
-  return sum === originalNumber;
+
+  console.log(`even number: ${evenNumbers.join(" ")}`);
+  console.log(`sum of even natural numbers upto ${n}: ${sum}`);
 }
 
-console.log(amstrongNumber(153));
-console.log(amstrongNumber(370));
-console.log(amstrongNumber(371));
-console.log(amstrongNumber(407));
-console.log(amstrongNumber(271));
+evenNumbersAndSum(5);
 
-// 10. Write a JavaScript program to construct the following pattern, using a nested for loop.
+console.log(`////////////////////////////////////////////////////////////////`);
 
-// *
-// * *
-// * * *
-// * * * *
-// * * * * *
+//  18.
+// find the sum of the series [ 1-X^2/2!+X^4/4!- .........].
+// Test Data :
+// Input the Value of x :2
+// Input the number of terms : 5
+// Expected Output :
+// the sum = -0.415873
+// Number of terms = 5
+// value of x = 2.000000
 
-for (let i = 1; i <= 5; i++) {
-  let line = "";
-  for (let j = 1; j <= i; j++) {
-    line += "*";
-  }
-  console.log(line);
-}
-
-
-// 11. Write a JavaScript program to compute the greatest common divisor (GCD) of two positive integers.
-
-var a = 2154; 
-var b = 458; 
-var gcd;
-while (a!=b)
-{
-	if (a>b)
-	{
-		a = a -b;
-	}
-	else
-	{
-		b = b - a;
-	}
-}
-gcd = a;
-console.log(gcd);
-
-// 12. Write a JavaScript program to sum 3 and 5 multiples under 1000.
-
-function sumMultiples(limit) {
+function calculateSeriesSum(x, terms) {
   let sum = 0;
+  let factorial = 1;
+  let sign = 1;
 
-  for (let i = 1; i < limit; i++) {
-      if (i % 3 === 0 || i % 5 === 0) {
-          sum += i;
-      }
+  for (let i = 0; i < terms; i++) {
+    if (i > 0) {
+      factorial *= 2 * i * (2 * i - 1);
+    }
+
+    let term = Math.pow(x, 2 * i) / factorial;
+
+    sum += sign * term;
+    sign *= -1;
   }
 
-  return sum;
+  console.log(`The sum = ${sum.toFixed(6)}`);
+  console.log(`Number of terms = ${terms}`);
+  console.log(`Value of x = ${x.toFixed(6)}`);
 }
 
-const limit = 1000;
-console.log(`The sum of multiples of 3 and 5 below ${limit} is ${sumMultiples(limit)}`);
+calculateSeriesSum(2, 5);
+
+//  19. Display the n terms of harmonic series and their sum.
+// 1 + 1/2 + 1/3 + 1/4 + 1/5 ... 1/n terms
+// Test Data :
+// Input the number of terms : 5
+// Expected Output :
+// 1/1 + 1/2 + 1/3 + 1/4 + 1/5 +
+// Sum of Series upto 5 terms : 2.283334
+
+function harmonicSeriesSum(n) {
+  let sum = 0;
+  let series = [];
+
+  for (let i = 1; i <= n; i++) {
+    let term = 1 / i;
+    series.push(`1/${i}`);
+    sum += term;
+  }
+
+  let seriesString = series.join(" + ") + " +";
+  console.log(seriesString);
+  console.log(`Sum of Series up to ${n} terms : ${sum.toFixed(6)}`);
+}
+
+harmonicSeriesSum(5);
