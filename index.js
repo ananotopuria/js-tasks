@@ -144,3 +144,56 @@ function harmonicSeriesSum(n) {
 }
 
 harmonicSeriesSum(5);
+
+//დავალება
+
+function sumOfDigitPow(num, pow) {
+  // !!!
+  // const remainder = num % 10;
+  // const secondNumber = (num - remainder) / 10; // 31
+  // const secondRemainder = secondNumber % 10; // 1
+  // const thirdNumber = (secondNumber - secondRemainder) / 10; // 3
+
+  let number = num;
+  let remainder;
+  while (number > 0) {
+    remainder = number % 10;
+    console.log(remainder);
+    number -= remainder;
+    number /= 10;
+
+    console.log(remainder ** pow);
+  }
+}
+
+// console.log(sumOfDigitPow(25, 2));
+console.log(sumOfDigitPow(316432, 3));
+// console.log(sumOfDigitPow(5, 3));
+// console.log(sumOfDigitPow(5, 3));
+
+
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
+console.log(reverseString("sadjasdasjda"));
+
+function isPalindrome(str) {
+  return reverseString(str) === str ? true : false;
+}
+
+console.log(isPalindrome("racecar"));
+console.log(isPalindrome("2024"));
+
+function isPalindromeIteration(str) {
+  for (let i = 0; i < str.length / 2; i++) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+console.log(isPalindromeIteration("racecar"));
+console.log(isPalindromeIteration("2024"));
+
