@@ -38,6 +38,9 @@ function getMaxSubSum(arr) {
 console.log("////////////////////////////////////////////////////////////////");
 console.log(getMaxSubSum([-1, 2, 3, -9]));
 console.log(getMaxSubSum([2, -1, 2, 3, -9]));
+console.log(getMaxSubSum([-1, 2, 3, -9, 11]));
+console.log(getMaxSubSum([-2, -1, 1, 2]));
+
 
 // getMaxSubSum([-1, 2, 3, -9]) == 5 (the sum of highlighted items)
 // ([2, -1, 2, 3, -9]) == 6
